@@ -7,9 +7,9 @@ var price_element = document.getElementById('price');
 
 
 // ------- settings --------------
-var defaultPrice = 50;
+var defaultPrice = 50; // prezzo di base
 var coupons = ['sconto2021', 'sconto-bool']; // codici sconto 
-var discount = 0.3;
+var discount = 0.3; // sconto 
 
 // inserisco nella pagina il prezzo di default richiamando la funzione
 writePrice(defaultPrice, price_element);
@@ -17,9 +17,9 @@ writePrice(defaultPrice, price_element);
 // imposto una serie di conseguenze all'accadere di un determinato evento (click del button)
 button.addEventListener('click', function(){
     // controllo del nome
-    nomeInserito = nameUser.value.trim();
-    // setto la condizone secondo cui l'utente deve inserire il nome del panino
-    if(nomeInserito.length === 0){
+    nomeInserito = nameUser.value.trim(); // il nome/valore inserito dall'utente senza spazi
+    // setto la condizone secondo cui l'utente deve inserire il nome del burger
+    if(nomeInserito.length === 0){ // se non è inserito niente allora: alert!
         alert("DEVI INSERIRE IL NOME DEL BURGER!");
     }else{
         var priceIngredients = 0;
