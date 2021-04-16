@@ -3,6 +3,7 @@ var ingredients = document.getElementsByClassName("ingredient-checkbox"); // mi 
 var nameUser = document.getElementById('name');
 var button = document.getElementById("button");
 var coupon = document.getElementById("coupon");
+var price_element = document.getElementById('price');
 
 
 // ------- settings --------------
@@ -10,7 +11,8 @@ var defaultPrice = 50;
 var coupons = ['sconto2021', 'sconto-bool']; // codici sconto 
 var discount = 0.3;
 
-
+// inserisco nella pagina il prezzo di default richiamando la funzione
+writePrice(defaultPrice, price_element);
 
 // imposto una serie di conseguenze all'accadere di un determinato evento (click del button)
 button.addEventListener('click', function(){
@@ -37,7 +39,15 @@ button.addEventListener('click', function(){
             prezzoFinale -= prezzoFinale * discount;
         }
 
-        var output_prezzoFinale = document.getElementById('price').innerHTML = prezzoFinale;
+        // output prezzo finale
+        writePrice(prezzoFinale, price);
 
     }
 })
+
+
+
+// ------------ function -----------
+function writePrice(value, target){
+    target.innerHTML = value.toFixed(2);
+}
