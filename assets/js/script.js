@@ -1,0 +1,43 @@
+// ----------- refereces -----------
+var ingredients = document.getElementsByClassName("ingredient-checkbox"); // mi restituisce un'array
+var nameUser = document.getElementById('name');
+var button = document.getElementById("button");
+var coupon = document.getElementById("coupon");
+
+
+// ------- settings --------------
+var defaultPrice = 50;
+var coupons = ['sconto2021', 'sconto-bool']; // codici sconto 
+var discount = 0.3;
+
+
+
+// imposto una serie di conseguenze all'accadere di un determinato evento (click del button)
+button.addEventListener('click', function(){
+    // controllo del nome
+    nomeInserito = nameUser.value.trim();
+    // setto la condizone secondo cui l'utente deve inserire il nome del panino
+    if(nomeInserito.length === 0){
+        alert("DEVI INSERIRE IL NOME DEL BURGER!");
+    }else{
+        var priceIngredients = 0;
+        // creo un ciclo per verificare se alcuni ingredienti sono checked
+        for(var i = 0; i < ingredients.length; i++){
+            var ingredient = ingredients[i];
+            // condizione secondo la quale se l'ingrediente viene selezionato allora aggiungo il suo value a priceIngredients
+            if(ingredient.checked === true){
+                priceIngredients += parseInt(ingredient.value);
+            }
+        }
+        var prezzoFinale = defaultPrice + priceIngredients;
+
+        // verifico la presenza del coupon sconto
+        if(coupons.includes(coupon.value)){
+            // se è presente applico lo sconto
+            prezzoFinale -= prezzoFinale * discount;
+        }
+
+        var output_prezzoFinale = document.getElementById('price').innerHTML = prezzoFinale;
+
+    }
+})
